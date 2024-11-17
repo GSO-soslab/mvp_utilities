@@ -361,7 +361,8 @@ void WorldOdomTransform::f_cb_odom(const nav_msgs::msg::Odometry::SharedPtr msg)
             geopose.pose.orientation.y = world_pose.pose.orientation.y;
             geopose.pose.orientation.z = world_pose.pose.orientation.z;
             geopose.pose.orientation.w = world_pose.pose.orientation.w;
-            geopose.header= world_pose.header;
+            geopose.header = world_pose.header;
+            geopose.header.frame_id = msg->child_frame_id;
             
             m_geopose_publisher->publish(geopose);
 
